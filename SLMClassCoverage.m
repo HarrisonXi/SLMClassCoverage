@@ -46,13 +46,13 @@
 
 static NSMutableDictionary *classesData_ = nil;
 + (void)collectData {
+    NSString *appVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
+    NSString *appBuild = [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
     if (!classesData_ && [[NSFileManager defaultManager] isReadableFileAtPath:self.filepath]) {
         NSDictionary *dataInfo = [NSDictionary dictionaryWithContentsOfFile:self.filepath];
 #if Auto_Clean_For_App_UPGRADING > 0
         NSString *dataVersion = dataInfo[@"version"];
-        NSString *appVersion = [NSBundle mainBundle].infoDictionary[@"CFBundleShortVersionString"];
         NSString *dataBuild = dataInfo[@"build"];
-        NSString *appBuild = [NSBundle mainBundle].infoDictionary[@"CFBundleVersion"];
         if ([dataVersion isEqualToString:appVersion] && [dataBuild isEqualToString:appBuild]) {
             classesData_ = [dataInfo[@"data"] mutableCopy];
         }
@@ -95,13 +95,15 @@ static NSMutableDictionary *classesData_ = nil;
         }];
         END_EVENT(step2)
     }
-    if ([[NSFileManager defaultManager] isWritableFileAtPath:self.filepath]) {
-        [classesData_ writeToFile:self.filepath atomically:YES];
-    }
+    NSMutableDictionary *dataInfo = [NSMutableDictionary dictionaryWithCapacity:3];
+    dataInfo[@"version"] = appVersion;
+    dataInfo[@"build"] = appBuild;
+    dataInfo[@"data"] = classesData_;
+    [dataInfo writeToFile:self.filepath atomically:YES];
 }
 
 + (void)reportDataWithBlock:(void (^)(NSDictionary<NSString *,NSNumber *> *))block {
-    block(classesData_);
+    block([classesData_ copy]);
 }
 
 @end
