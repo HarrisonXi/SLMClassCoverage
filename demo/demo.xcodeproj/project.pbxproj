@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9265297525C802D400D1823A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9265297425C802D400D1823A /* AppDelegate.m */; };
-		9265297825C802D400D1823A /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9265297725C802D400D1823A /* SceneDelegate.m */; };
 		9265297B25C802D400D1823A /* ViewControllerA.m in Sources */ = {isa = PBXBuildFile; fileRef = 9265297A25C802D400D1823A /* ViewControllerA.m */; };
 		9265297E25C802D400D1823A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9265297C25C802D400D1823A /* Main.storyboard */; };
 		9265298025C802D600D1823A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9265297F25C802D600D1823A /* Assets.xcassets */; };
@@ -23,8 +22,6 @@
 		9265297025C802D400D1823A /* demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9265297325C802D400D1823A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9265297425C802D400D1823A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9265297625C802D400D1823A /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		9265297725C802D400D1823A /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		9265297925C802D400D1823A /* ViewControllerA.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewControllerA.h; sourceTree = "<group>"; };
 		9265297A25C802D400D1823A /* ViewControllerA.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewControllerA.m; sourceTree = "<group>"; };
 		9265297D25C802D400D1823A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,8 +70,6 @@
 				9265299925C80AC000D1823A /* SLMClassCoverage */,
 				9265297325C802D400D1823A /* AppDelegate.h */,
 				9265297425C802D400D1823A /* AppDelegate.m */,
-				9265297625C802D400D1823A /* SceneDelegate.h */,
-				9265297725C802D400D1823A /* SceneDelegate.m */,
 				9265297925C802D400D1823A /* ViewControllerA.h */,
 				9265297A25C802D400D1823A /* ViewControllerA.m */,
 				9265299225C806CE00D1823A /* ViewControllerB.h */,
@@ -173,7 +168,6 @@
 				9265299D25C80AD200D1823A /* SLMClassCoverage.m in Sources */,
 				9265297525C802D400D1823A /* AppDelegate.m in Sources */,
 				9265298625C802D600D1823A /* main.m in Sources */,
-				9265297825C802D400D1823A /* SceneDelegate.m in Sources */,
 				9265299425C806CE00D1823A /* ViewControllerB.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,7 +245,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -304,7 +298,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -320,7 +314,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -340,7 +334,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = demo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
