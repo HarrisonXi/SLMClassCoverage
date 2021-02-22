@@ -3,6 +3,7 @@
 //  SLMClassCoverage
 //
 //  Created by HarrisonXi on 2021/2/1.
+//  Copyright © 2021 harrisonxi.com. All rights reserved.
 //
 
 #import "SLMClassCoverage.h"
@@ -70,11 +71,15 @@ static NSMutableDictionary *classesData_ = nil;
         Class *classes = objc_copyClassList(&count);
         for (unsigned int index = 0; index < count; index++) {
             Class cls = classes[index];
-            const char * image = class_getImageName(cls);
-            if (image && strcmp(appImage, image) == 0) {
-                // exclude system framework and 3rd framework
-                // just scan classes in main bundle
-                [classesData_ setObject:@(NO) forKey:NSStringFromClass(cls)];
+            const char * name = class_getName(cls);
+            if (*name != '_') {
+                // exclude some private classes and dynamic classes
+                const char * image = class_getImageName(cls);
+                if (image && strcmp(appImage, image) == 0) {
+                    // exclude system framework and 3rd framework
+                    // just scan classes in main bundle
+                    [classesData_ setObject:@(NO) forKey:NSStringFromClass(cls)];
+                }
             }
         }
         free(classes);
@@ -85,11 +90,14 @@ static NSMutableDictionary *classesData_ = nil;
         [classesData_ enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull className, NSNumber * _Nonnull initialized, BOOL * _Nonnull stop) {
             if ([initialized boolValue] == NO) {
                 Class metaCls = objc_getMetaClass(className.UTF8String);
-                // https://opensource.apple.com/source/objc4/objc4-787.1/runtime/objc-runtime-new.h.auto.html
-                uint64_t *bits = (__bridge void *)metaCls + 32;
-                uint32_t *data = (uint32_t *)(*bits & FAST_DATA_MASK);
-                if ((*data & RW_INITIALIZED) > 0) {
-                    [classesData_ setObject:@(YES) forKey:className];
+                if (metaCls) {
+                    // https://opensource.apple.com/source/objc4/objc4-787.1/runtime/objc-runtime-new.h.auto.html
+                    // https://opensource.apple.com/source/objc4/objc4-818.2/runtime/objc-runtime-new.h.auto.html
+                    uint64_t *bits = (__bridge void *)metaCls + 32;
+                    uint32_t *data = (uint32_t *)(*bits & FAST_DATA_MASK);
+                    if ((*data & RW_INITIALIZED) > 0) {
+                        [classesData_ setObject:@(YES) forKey:className];
+                    }
                 }
             }
         }];
